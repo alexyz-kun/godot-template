@@ -1,0 +1,2 @@
+class_name SceneExample
+extends Node3D
