@@ -1,31 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://dobb8dmhdq64d"]
+[gd_scene load_steps=14 format=3 uid="uid://dobb8dmhdq64d"]
 
+[ext_resource type="Script" uid="uid://gowsicbgefx8" path="res://scripts/scenes/scr_scene_example.gd" id="1_5rs17"]
 [ext_resource type="Texture2D" uid="uid://b0ouqr32vcf40" path="res://textures/tex_example.png" id="1_76qo3"]
 [ext_resource type="PackedScene" uid="uid://yv7tpud80msv" path="res://prefabs/prefab_example.glb" id="1_dbt5r"]
 [ext_resource type="Script" uid="uid://bcne3581atxik" path="res://scripts/scr_example_camera.gd" id="1_e13io"]
+[ext_resource type="Script" uid="uid://ba52k6cyehsdi" path="res://scripts/scr_controller_first_person.gd" id="1_wrbqh"]
+[ext_resource type="Script" uid="uid://d3x8l55l74imm" path="res://scripts/scr_controller_third_person.gd" id="3_i2ssx"]
+[ext_resource type="Texture2D" uid="uid://c8iv8mryio243" path="res://textures/tex_earth_day.png" id="6_sihf1"]
+[ext_resource type="Script" uid="uid://pbixlo24olnm" path="res://scripts/scr_controller_rotatable.gd" id="7_2alv1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rs17"]
+size = Vector3(0.2, 0.4, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dbt5r"]
 
 [sub_resource type="Environment" id="Environment_76qo3"]
 ambient_light_source = 2
 ambient_light_color = Color(0.95, 1, 0.9875, 1)
 ssao_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_dbt5r"]
+[sub_resource type="SphereMesh" id="SphereMesh_i2ssx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tom1p"]
+albedo_texture = ExtResource("6_sihf1")
+normal_enabled = true
 
 [node name="SceneExample" type="Node3D"]
+script = ExtResource("1_5rs17")
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 0.9518195, 0.30665895, 0, -0.30665895, 0.9518195, 0, 0.46610802, 0.87188816)
-environment = SubResource("Environment_76qo3")
-script = ExtResource("1_e13io")
+[node name="FirstPerson" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46610805, 0.87188816)
+script = ExtResource("1_wrbqh")
+
+[node name="ThirdPerson" type="CharacterBody3D" parent="Node3D"]
+script = ExtResource("3_i2ssx")
+
+[node name="Vase" parent="Node3D/ThirdPerson" instance=ExtResource("1_dbt5r")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/ThirdPerson"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.2, 2.9802322e-08)
+shape = SubResource("BoxShape3D_5rs17")
 
 [node name="Floor" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("PlaneMesh_dbt5r")
 skeleton = NodePath("../..")
 
-[node name="Vase" parent="Node3D" instance=ExtResource("1_dbt5r")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9518195, 0.30665895, 0, -0.30665895, 0.9518195, 0, 0.46610805, 0.87188816)
+environment = SubResource("Environment_76qo3")
+script = ExtResource("1_e13io")
+
+[node name="Planet" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = SubResource("SphereMesh_i2ssx")
+surface_material_override/0 = SubResource("StandardMaterial3D_tom1p")
+script = ExtResource("7_2alv1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

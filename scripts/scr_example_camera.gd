@@ -2,9 +2,9 @@ class_name ExampleCamera
 extends Camera3D
 
 enum CameraMode {
-	IDLE,
-	FREE_ROAM,
-	ORBIT_PLAYER,
+	ORBIT,
+	FIRST_PERSON,
+	THIRD_PERSON,
 }
 
 const ORIGIN: Vector3 = Vector3.ZERO
@@ -21,7 +21,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	revolve(delta)
+	pass
+	# revolve(delta)
 
 
 # Private methods

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d265vtnfqfchr"]
+[gd_scene load_steps=9 format=3 uid="uid://d265vtnfqfchr"]
 
 [ext_resource type="Script" uid="uid://b8mx2uqklllvf" path="res://scripts/scenes/scr_scene_main.gd" id="1_ifhj8"]
 [ext_resource type="Script" uid="uid://dr0c7s6bf2lqo" path="res://scripts/managers/scr_resource_manager.gd" id="2_7y7v8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cutdswqduvvk0" path="res://scripts/managers/resources/scr_prefab_resource_manager.gd" id="4_qt18x"]
 [ext_resource type="Script" uid="uid://c0eagtupc836l" path="res://scripts/managers/resources/scr_music_resource_manager.gd" id="5_yvsxh"]
 [ext_resource type="Script" uid="uid://c0aeob6op7s87" path="res://scripts/managers/resources/scr_sound_resource_manager.gd" id="6_uab3x"]
+[ext_resource type="Script" uid="uid://d2j2h88ckktki" path="res://scripts/managers/scr_input_manager.gd" id="8_jr2ww"]
 
 [node name="SceneMain" type="Node3D"]
 script = ExtResource("1_ifhj8")
@@ -28,5 +29,8 @@ script = ExtResource("5_yvsxh")
 
 [node name="SoundResourceManager" type="Node" parent="Managers/ResourceManager"]
 script = ExtResource("6_uab3x")
+
+[node name="InputManager" type="Node" parent="Managers"]
+script = ExtResource("8_jr2ww")
 
 [node name="ActiveSceneParent" type="Node3D" parent="."]

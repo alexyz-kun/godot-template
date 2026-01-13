@@ -1,0 +1,2 @@
+class_name ControllerRotatable
+extends Node3D

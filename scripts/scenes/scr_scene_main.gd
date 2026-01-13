@@ -9,6 +9,8 @@ var active_scene_parent: Node3D
 # Base methods
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 	manager = $Managers
 	active_scene_parent = $ActiveSceneParent
 	
@@ -17,3 +19,6 @@ func _ready() -> void:
 	var new_scene_prefab: PackedScene = load(manager.resource.scene.example)
 	var new_scene: Node3D = new_scene_prefab.instantiate()
 	active_scene_parent.add_child(new_scene)
+	
+	var scene_example: SceneExample = new_scene
+	scene_example.on_scene_active()
