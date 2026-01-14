@@ -9,8 +9,6 @@ var active_scene_parent: Node3D
 # Base methods
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	manager = $Managers
 	active_scene_parent = $ActiveSceneParent
 	

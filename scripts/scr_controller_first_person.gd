@@ -40,6 +40,8 @@ func attach_camera(p_camera: Camera3D):
 # Private methods
 
 func _handle_position(delta: float):
+	if camera == null:
+		return
 	
 	# Update position
 	position += speed * delta_position * delta
