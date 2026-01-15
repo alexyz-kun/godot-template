@@ -32,5 +32,3 @@ func on_scene_active() ->  void:
 func attach_camera_to_planet():
 	camera.global_position = planet.global_position - 2 * Vector3.FORWARD
 	camera.look_at(planet.global_position)
-	
-	planet.set_up()
