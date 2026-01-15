@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_handle_camera_zoom(delta)
-	_handle_camera_angle(delta)
+	_handle_camera_pos(delta)
 	_handle_position(delta)
 
 
@@ -70,7 +70,7 @@ func _handle_position(delta: float):
 		delta_position = delta_position.rotated(Vector3.UP, -camera_angle.x + 0.5 * PI)
 
 
-func _handle_camera_angle(delta: float):
+func _handle_camera_pos(delta: float):
 	if camera == null:
 		return
 	

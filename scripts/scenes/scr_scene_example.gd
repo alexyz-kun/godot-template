@@ -21,10 +21,10 @@ func on_scene_active() ->  void:
 	planet = $Node3D/Planet
 	
 	# first_person.attach_camera(camera)
-	# third_person.attach_camera(camera)
-	attach_camera_to_planet()
+	third_person.attach_camera(camera)
+	# attach_camera_to_planet()
 	
-	# Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 # Private methods
