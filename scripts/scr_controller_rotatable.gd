@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 # Private methods
 
 func _handle_drag(event: InputEventMouseMotion):
-	if !SceneMain.manager.input.lmb_is_held:
+	if !SceneMain.instance.manager.input.lmb_is_held:
 		return
 	
 	target_rotation += MOUSE_SENSITIVITY * event.relative

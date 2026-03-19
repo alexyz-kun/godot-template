@@ -20,14 +20,14 @@ func _ready() -> void:
 	altitude = global_position.y
 
 
-func _process(delta: float) -> void:
+func _process(p_delta: float) -> void:
 	pass
-	# revolve(delta)
+	# revolve(p_delta)
 
 
 # Private methods
 
-func revolve(delta: float):
-	angle += 0.2 * PI * delta
+func revolve(p_delta: float):
+	angle += 0.2 * PI * p_delta
 	global_position = distance * Vector3(cos(angle), altitude, sin(angle))
 	look_at(ORIGIN)

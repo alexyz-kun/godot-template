@@ -12,6 +12,10 @@ func _ready() -> void:
 	pass
 
 
+func _process(_delta: float):
+	pass
+
+
 # Public methods
 
 func on_scene_active() ->  void:
